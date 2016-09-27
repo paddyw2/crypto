@@ -16,6 +16,14 @@ fi
 # get user specified directory
 target_dir="$1"
 
+# check for trailing slash, and remove if present
+length=${#target_dir}
+((length--))
+if [ "${target_dir:$length:1}" == "/" ]; then
+    echo "Removing trailing slash..."
+    target_dir=$( echo $target_dir |sed 's/.\{1\}$//')
+fi
+
 # archive and compress the directory
 tar -zcf "$target_dir".crypted "$target_dir"
 
