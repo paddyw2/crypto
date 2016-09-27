@@ -2,7 +2,7 @@
 
 ### Uses tar, gzip, and Gnupg in a simple bash script
 
-Requires: tar, gzip, gpg
+#### Requires: tar, gzip, gpg (apt-get install gnupg/brew install gnupg)
 
 ### Usage
 

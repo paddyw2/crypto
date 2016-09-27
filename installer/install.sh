@@ -1,7 +1,7 @@
 install_path=/usr/local/bin
+echo "Downloading Crypto..."
 mkdir crypto_download_scripts
 cd crypto_download_scripts
-echo "Downloading Crypto..."
 wget -q https://raw.githubusercontent.com/paddyw2/crypto/master/crypto
 wget -q https://raw.githubusercontent.com/paddyw2/crypto/master/dcrypto
 echo "Installing Crypto..."
