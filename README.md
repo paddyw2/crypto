@@ -7,16 +7,18 @@ Requires: tar, gzip, gpg
 ### Usage
 
 To encrypt a directory:
-<code>crypto <target directory> </code>
+<code>crypto [target directory]</code>
 
 To decrypt a directory:
-<code>dcrypto <target directory> </code>
+<code>dcrypto [target directory]</code>
 
 ### Installation
 
-Default installation path is /usr/local/bin
+Default installation path is <code>/usr/local/bin</code>
 
-Edit install.sh to change installation path
+Edit <code>install.sh</code> to change installation path
+
+If you do not have sudo access, you can create your own executables folder on your Desktop and add it to your .bashrc $PATH. You will then need to edit the installation path variable in the install.sh script in this case, refresh your .bashrc, and run the command without sudo to install Crypto.
 
 Default Install:
-<code>wget https://raw.githubusercontent.com/paddyw2/crypto/master/installer/install.sh && bash install.sh && rm install.sh</code>
+<code>sudo wget https://raw.githubusercontent.com/paddyw2/crypto/master/installer/install.sh && bash install.sh && rm install.sh</code>
