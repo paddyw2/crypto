@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 install_path=/usr/local/bin
 echo "Downloading Crypto..."
 mkdir crypto_download_scripts
