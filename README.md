@@ -21,4 +21,4 @@ Edit <code>install.sh</code> to change installation path
 If you do not have sudo access, you can create your own executables folder on your Desktop and add it to your .bashrc $PATH. You will then need to edit the installation path variable in the install.sh script in this case, refresh your .bashrc, and run the command without sudo to install Crypto.
 
 Default Install:
-<code>sudo wget -q https://raw.githubusercontent.com/paddyw2/crypto/master/installer/install.sh && bash install && rm install.sh</code>
+<code>sudo wget -q https://raw.githubusercontent.com/paddyw2/crypto/master/installer/install && bash install && rm install</code>
