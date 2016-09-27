@@ -1,7 +1,7 @@
 install_path=/usr/local/bin
 echo "Downloading Crypto..."
-wget https://raw.githubusercontent.com/paddyw2/crypto/master/crypto
-wget https://raw.githubusercontent.com/paddyw2/crypto/master/dcrypto
+wget -q https://raw.githubusercontent.com/paddyw2/crypto/master/crypto
+wget -q https://raw.githubusercontent.com/paddyw2/crypto/master/dcrypto
 echo "Installing Crypto..."
 chmod +x crypto && mv crypto $install_path
 chmod +x dcrypto && mv dcrypto $install_path
