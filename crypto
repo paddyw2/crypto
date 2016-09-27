@@ -17,7 +17,7 @@ target_dir="$1"
 tar -zcf "$target_dir".crypted "$target_dir"
 
 # encrypt the archive file
-gpg -c "$target_dir".crypted
+gpg -c --cipher-algo AES256 "$target_dir".crypted
 
 # delete old directory and unencrypted archive
 rm -rf $target_dir && rm "$target_dir".crypted

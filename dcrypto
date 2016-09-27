@@ -25,8 +25,7 @@ mv "$crypted_path" "$crypted_path".gpg
 crypt_file="$crypted_path".gpg
 
 # get final target directory name (without .crypted or .gpg)
-original_path=${crypted_path::-8}
-
+original_path=$( echo $crypted_path |sed 's/.\{8\}$//')
 # decrypt compressed archive
 gpg -q $crypt_file
 
