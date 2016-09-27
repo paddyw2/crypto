@@ -4,7 +4,7 @@
 # then gpg encrypt and delete remaining files
 #
 if [ -z ${1+x} ]; then
-    echo -e "Error - No directory specified\nUsage: crypto [target directory]\nFor decryption, use the dcrypto command"
+    echo -e "Error - No directory specified\nUsage: crypto [target directory]\nFor decryption, use the 'dcrypto' command"
     exit 1
 else
     echo "Preparing $1..."
