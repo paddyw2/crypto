@@ -19,4 +19,4 @@ Default installation path is /usr/local/bin
 Edit install.sh to change installation path
 
 Default Install:
-<code>wget install.sh && bash install.sh && rm install.sh</code>
+<code>wget https://raw.githubusercontent.com/paddyw2/crypto/master/installer/install.sh && bash install.sh && rm install.sh</code>
