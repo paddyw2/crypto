@@ -22,3 +22,6 @@ If you do not have sudo access, you can create your own executables folder on yo
 
 Default Install:
 <code>sudo wget -q https://raw.githubusercontent.com/paddyw2/crypto/master/installer/install && bash install && rm install</code>
+
+Default Update:
+<code>sudo wget -q https://raw.githubusercontent.com/paddyw2/crypto/master/installer/update && bash update && rm update</code>

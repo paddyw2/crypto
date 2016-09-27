@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+install_path=/usr/local/bin
+echo "Removing old files..."
+rm "$install_path"/crypto && rm "$install_path"/dcrypto
+echo "Downloading latest Crypto..."
+mkdir crypto_download_scripts
+cd crypto_download_scripts
+wget -q https://raw.githubusercontent.com/paddyw2/crypto/master/crypto
+wget -q https://raw.githubusercontent.com/paddyw2/crypto/master/dcrypto
+echo "Re-installing Crypto..."
+chmod +x crypto && mv crypto $install_path
+chmod +x dcrypto && mv dcrypto $install_path
+cd ..
+rm -rf crypto_download_scripts
+echo "Update finished"
+echo "Type 'crypto <target directory>' to encrypt a folder"
