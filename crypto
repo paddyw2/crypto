@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+#
+# bash script to tar with gzip a folder
+# then gpg encrypt and delete remaining files
+#
+if [ -z ${1+x} ]; then
+    echo -e "Error - No directory specified\nUsage: crypto [target directory]\nFor decryption, use the dcrypto command"
+    exit 1
+else
+    echo "Preparing $1..."
+fi
+
+# get user specified directory
+target_dir="$1"
+
+# archive and compress the directory
+tar -zcf "$target_dir".crypted "$target_dir"
+
+# encrypt the archive file
+gpg -c "$target_dir".crypted
+
+# delete old directory and unencrypted archive
+rm -rf $target_dir && rm "$target_dir".crypted
+
+# rename final file with .crypted extension only
+mv "$target_dir".crypted.gpg "$target_dir".crypted
+
+# print success message
+echo "$target_dir --> $target_dir.crypted"
+echo "Encryption complete"

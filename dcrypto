@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+#
+# bash script to tar with gzip a folder
+# then gpg encrypt and delete remaining files
+#
+
+# check an input was provided
+if [ -z ${1+x} ]; then
+    echo -e "Error - No .crypted file specified\nUsage: dcrypto [target file]"
+    exit 1
+elif ! [[ $1 =~ \.crypted ]]; then
+    echo "Invalid input file - must have .crypted extension"
+    exit 1
+else
+    echo "Preparing $1..."
+fi
+
+# save user file input
+crypted_path="$1"
+
+# add gpg extenion for gpg decryption
+mv "$crypted_path" "$crypted_path".gpg
+
+# get encrypted file by name
+crypt_file="$crypted_path".gpg
+
+# get final target directory name (without .crypted or .gpg)
+original_path=${crypted_path::-8}
+
+# decrypt compressed archive
+gpg -q $crypt_file
+
+# decompress archive, which creates directory without .crypted extension
+tar -zxf "$crypted_path"
+
+# clean up files
+rm "$crypted_path".gpg && rm "$crypted_path"
+
+echo "$1 --> $original_path"
+echo "Decryption complete"
