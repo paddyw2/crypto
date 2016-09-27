@@ -10,7 +10,7 @@ elif ! { [ -f "$1" ] || [ -d "$1" ]; }; then
     echo "File or directory not found"
     exit 1
 else
-    echo "Preparing $1..."
+    echo "Checking input..."
 fi
 
 # get user specified directory
@@ -23,6 +23,9 @@ if [ "${target_dir:$length:1}" == "/" ]; then
     echo "Removing trailing slash..."
     target_dir=$( echo $target_dir |sed 's/.\{1\}$//')
 fi
+
+# echo current stage
+echo "Preparing $1..."
 
 # archive and compress the directory
 tar -zcf "$target_dir".crypted "$target_dir"
