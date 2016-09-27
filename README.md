@@ -14,4 +14,9 @@ To decrypt a directory:
 
 ### Installation
 
-<code>wget install.sh && bash install.sh</code>
+Default installation path is /usr/local/bin
+
+Edit install.sh to change installation path
+
+Default Install:
+<code>wget install.sh && bash install.sh && rm install.sh</code>
