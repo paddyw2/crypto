@@ -6,6 +6,9 @@
 if [ -z ${1+x} ]; then
     echo -e "Error - No directory specified\nUsage: crypto [target directory]\nFor decryption, use the 'dcrypto' command"
     exit 1
+elif ! { [ -f "$1" ] || [ -d "$1" ]; }; then
+    echo "File or directory not found"
+    exit 1
 else
     echo "Preparing $1..."
 fi
@@ -16,8 +19,21 @@ target_dir="$1"
 # archive and compress the directory
 tar -zcf "$target_dir".crypted "$target_dir"
 
+# check if tar.gz was successful
+if ! [ -f "$target_dir.crypted" ]; then
+    echo "Archive and/or compression failed - exiting"
+    exit 1
+fi
+
 # encrypt the archive file
 gpg -c --cipher-algo AES256 "$target_dir".crypted
+
+# check encryption was successful
+if ! [ -f "$target_dir.crypted.gpg" ]; then
+    echo "Encryption failed - exiting"
+    rm $target_dir.crypted
+    exit 1
+fi
 
 # delete old directory and unencrypted archive
 rm -rf $target_dir && rm "$target_dir".crypted

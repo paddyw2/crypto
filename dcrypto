@@ -11,6 +11,9 @@ if [ -z ${1+x} ]; then
 elif ! [[ $1 =~ \.crypted ]]; then
     echo "Invalid input file - must have .crypted extension"
     exit 1
+elif ! { [ -f "$1" ] || [ -d "$1" ]; }; then
+    echo "File or directory not found"
+    exit 1
 else
     echo "Preparing $1..."
 fi
@@ -26,11 +29,25 @@ crypt_file="$crypted_path".gpg
 
 # get final target directory name (without .crypted or .gpg)
 original_path=$( echo $crypted_path |sed 's/.\{8\}$//')
+
 # decrypt compressed archive
 gpg -q $crypt_file
 
+# check if decryption successful 
+if ! [ -f "$crypted_path" ]; then
+    echo "Decryption failed - exiting"
+    mv $crypt_file $crypted_path
+    exit 1
+fi
+
 # decompress archive, which creates directory without .crypted extension
 tar -zxf "$crypted_path"
+
+# check if decompression was succesful
+if ! { [ -f "$original_path" ] || [ -d "$original_path" ]; }; then
+    echo "Decompression failed - exiting"
+    exit 1
+fi
 
 # clean up files
 rm "$crypted_path".gpg && rm "$crypted_path"
