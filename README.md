@@ -25,3 +25,6 @@ Default Install:
 
 Default Update:
 <code>sudo wget -q https://raw.githubusercontent.com/paddyw2/crypto/master/installer/update && bash update && rm update</code>
+
+Default Uninstall:
+<code>sudo wget -q https://raw.githubusercontent.com/paddyw2/crypto/master/installer/uninstall && bash uninstall && rm uninstall</code>
